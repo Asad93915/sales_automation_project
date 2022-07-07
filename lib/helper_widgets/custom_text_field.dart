@@ -17,7 +17,8 @@ class CustomTextField extends StatelessWidget {
   final IconData? suffixIcon;
   final Function()? onTapSuffix;
   final double horizntalMargin;
-  CustomTextField({this.headerText, this.controller, this.inputType, this.inputAction, this.focusNode, this.obscureText=false, this.length, this.prefixIcon, this.suffixIcon, this.hintText, this.labelText, this.onTapSuffix, this.horizntalMargin=12.0});
+  final Color? hintTextColor;
+  CustomTextField({this.headerText, this.controller, this.inputType, this.inputAction, this.focusNode, this.obscureText=false, this.length, this.prefixIcon, this.suffixIcon, this.hintText, this.labelText, this.onTapSuffix, this.horizntalMargin=12.0, this.hintTextColor=Colors.black});
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,7 @@ class CustomTextField extends StatelessWidget {
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
               hintText: hintText,
+              hintStyle: TextStyle(color:hintTextColor ),
               labelText: labelText,
               fillColor: Colors.black12,
               filled: true,

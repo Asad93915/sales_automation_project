@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:sales_automation_project/helper_services/custom_loader.dart';
 import 'package:sales_automation_project/helper_widgets/custom_button.dart';
@@ -10,8 +12,10 @@ import 'package:sales_automation_project/providers/RegionProvider.dart';
 import 'package:sales_automation_project/providers/area_provider.dart';
 import 'package:sales_automation_project/providers/daily_activity_provider.dart';
 import 'package:sales_automation_project/providers/get_cities_provider.dart';
+import 'package:sales_automation_project/providers/user_provider.dart';
 import 'package:sales_automation_project/services/daily_activity_service.dart';
 import 'package:sales_automation_project/services/get_region-services.dart';
+import 'package:sales_automation_project/services/mark_attendance_service.dart';
 
 import '../configs/colors.dart';
 import '../helper_services/custom_get_reques_services.dart';
@@ -41,6 +45,9 @@ class _MarkAttendanceWidgetState extends State<MarkAttendanceWidget> {
   //   });
   //   super.initState();
   // }
+
+
+
   int? selectedActivity;
   @override
   void updateDailyActivity(int value){
@@ -72,6 +79,18 @@ void updateArea(int? value){
   setState(() {
   });
 }
+  _attendanceHandler()async{
+
+    CustomLoader.showLoader(context: context);
+    await MarkAttendanceService().markAttendance(context: context,
+        userId: Provider.of<UserDataProvider>(context,listen: false).user!.sOID!,
+        activityId: selectedActivity!,
+        regionId: selectedRegion!,
+        cityId: selectedCity!,
+        areaId: selectedArea!);
+    CustomLoader.hideLoader(context);
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -228,7 +247,10 @@ void updateArea(int? value){
                 );
               }),
               CustomButton(
-                onPressed: (){},
+                onPressed: (){
+                  _attendanceHandler();
+                  setState(() {});
+                },
                 height: 45.0,
                 text: "MARK ATTENDANCE",
                 width: double.infinity,
@@ -243,6 +265,6 @@ void updateArea(int? value){
           ),
         ),
       );
-
   }
+
 }

@@ -14,6 +14,7 @@ import 'package:sales_automation_project/providers/get_cities_provider.dart';
 import 'package:sales_automation_project/screens/change_password_screen.dart';
 import 'package:sales_automation_project/screens/custom_drawer_screen.dart';
 import 'package:sales_automation_project/screens/mark_attandace_widget.dart';
+import 'package:sales_automation_project/screens/school_registration_widget.dart';
 import 'package:sales_automation_project/services/area_service.dart';
 import 'package:sales_automation_project/services/dashboard_services.dart';
 
@@ -40,6 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
   static  List<Widget>widgetsOption=[
     _DashboardWidget(),
     MarkAttendanceWidget(),
+   SchoolRegistrationWidget(),
+   SchoolRegistrationWidget(),
   ];
 
   _getDashboard()async{

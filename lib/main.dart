@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sales_automation_project/providers/RegionProvider.dart';
 import 'package:sales_automation_project/providers/area_provider.dart';
+import 'package:sales_automation_project/providers/attendance_provider.dart';
 import 'package:sales_automation_project/providers/daily_activity_provider.dart';
 import 'package:sales_automation_project/providers/dashboard_provider.dart';
 import 'package:sales_automation_project/providers/get_cities_provider.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context)=>DailyActivityProvider()),
         ChangeNotifierProvider(create: (context)=>GetRegionProvider()),
         ChangeNotifierProvider(create: (context)=>GetCitiesProvider()),
-        ChangeNotifierProvider(create: (context)=>AreaProvider())
+        ChangeNotifierProvider(create: (context)=>AreaProvider()),
+        ChangeNotifierProvider(create: (context)=>MarkAttendanceProvider())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

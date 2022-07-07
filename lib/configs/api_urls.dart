@@ -6,3 +6,4 @@ const String dailyActivityUrl=baseUrl + "GetDayInOutList";
 const String getRegionUrl=baseUrl + "GetRegions?SOID=";
 const String getCitiesUrl=baseUrl + "AllCities?RegionID=";
 const String areaUrl=baseUrl + "Areas?";
+const String markAttendanceUrl=baseUrl + "DayInDayOut";
